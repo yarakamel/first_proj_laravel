@@ -18,7 +18,7 @@
 															<!--begin::Col-->
 															<div class="col-md-6 fv-row fv-plugins-icon-container">
 																<!--begin::Label-->
-																<label class="required fs-5 fw-semibold mb-2">First Name</label>
+																<label class="required fs-5 fw-semibold mb-2">رقم هوية اليتيم</label>
 																<!--end::Label-->
 																<!--begin::Input-->
 																<input type="text" class="form-control form-control-solid" placeholder="" name="first_name">
