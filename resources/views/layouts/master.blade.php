@@ -40,7 +40,9 @@ License: For each use you must have a valid license purchased only from above li
 		<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
 		<!--end::Global Stylesheets Bundle-->
 		<script>// Frame-busting to prevent site from being loaded within a frame without permission (click-jacking) if (window.top != window.self) { window.top.location.replace(window.self.location.href); }</script>
-	</head>
+	    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    </head>
 	<!--end::Head-->
 	<!--begin::Body-->
 	<body id="kt_app_body" data-kt-app-header-fixed="true" data-kt-app-header-fixed-mobile="true" data-kt-app-sidebar-enabled="true" data-kt-app-sidebar-fixed="true" data-kt-app-sidebar-hoverable="true" data-kt-app-sidebar-push-toolbar="true" data-kt-app-sidebar-push-footer="true" data-kt-app-toolbar-enabled="true" data-kt-app-aside-enabled="true" data-kt-app-aside-fixed="true" data-kt-app-aside-push-toolbar="true" data-kt-app-aside-push-footer="true" class="app-default">
@@ -3916,7 +3918,7 @@ License: For each use you must have a valid license purchased only from above li
 										</div>
 										<!--end::Page title-->
 										<!--begin::Actions-->
-										<a href="#" class="btn btn-sm btn-success ms-3 px-4 py-3" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app">Create Project</a>
+										<a href="/show-all" class="btn btn-sm btn-success ms-3 px-4 py-3">عرض الجميع</a>
 										<!--end::Actions-->
 									</div>
 									<!--end::Toolbar wrapper-->
@@ -7142,6 +7144,109 @@ License: For each use you must have a valid license purchased only from above li
 			</div>
 			<!--end::Modal dialog-->
 		</div>
+        <div class="modal fade" id="kt_modal_update" tabindex="-1" aria-hidden="true">
+			<!--begin::Modal dialog-->
+			<div class="modal-dialog modal-dialog-centered mw-900px">
+				<!--begin::Modal content-->
+				<div class="modal-content">
+					<!--begin::Modal header-->
+					<div class="modal-header">
+						<!--begin::Modal title-->
+						<h2>تعديل بيانات اليتيم</h2>
+                        <input type="hidden" id="edit_id" value="" />
+						<!--end::Modal title-->
+						<!--begin::Close-->
+						<div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+							<i class="ki-duotone ki-cross fs-1">
+								<span class="path1"></span>
+								<span class="path2"></span>
+							</i>
+						</div>
+						<!--end::Close-->
+					</div>
+					<!--end::Modal header-->
+					<!--begin::Modal body-->
+					<div class="modal-body py-lg-10 px-lg-10">
+						<!--begin::Stepper-->
+						<div class="stepper stepper-pills stepper-column d-flex flex-column flex-xl-row flex-row-fluid" id="kt_modal_create_app_stepper">
+
+							<!--begin::Content-->
+							<div class="flex-row-fluid py-lg-5 px-lg-15">
+								<!--begin::Form-->
+
+									<!--begin::Step 1-->
+									<div class="current" data-kt-stepper-element="content">
+										<div class="w-100">
+											<!--begin::Input group-->
+											<div class="fv-row mb-10">
+												<!--begin::Label-->
+												<label class="d-flex align-items-center fs-5 fw-semibold mb-2">
+													<span class="required">رقم هوية اليتيم</span>
+													<span class="ms-1" data-bs-toggle="tooltip" title="Specify your unique app name">
+														<i class="ki-duotone ki-information-5 text-gray-500 fs-6">
+															<span class="path1"></span>
+															<span class="path2"></span>
+															<span class="path3"></span>
+														</i>
+													</span>
+												</label>
+												<!--end::Label-->
+												<!--begin::Input-->
+												<input type="text" id="edit_id_no" class="form-control form-control-lg form-control-solid" name="name" placeholder="" value="" />
+												<!--end::Input-->
+											</div>
+                                            <div class="fv-row mb-10">
+												<!--begin::Label-->
+												<label class="d-flex align-items-center fs-5 fw-semibold mb-2">
+													<span class="required">إسم اليتيم</span>
+													<span class="ms-1" data-bs-toggle="tooltip" title="Specify your unique app name">
+														<i class="ki-duotone ki-information-5 text-gray-500 fs-6">
+															<span class="path1"></span>
+															<span class="path2"></span>
+															<span class="path3"></span>
+														</i>
+													</span>
+												</label>
+												<!--end::Label-->
+												<!--begin::Input-->
+												<input type="text" id="edit_full_name" class="form-control form-control-lg form-control-solid" name="name" placeholder="" value="" />
+												<!--end::Input-->
+											</div>
+                                                   <div class="fv-row mb-10">
+												<!--begin::Label-->
+												<label class="d-flex align-items-center fs-5 fw-semibold mb-2">
+													<span class="required">العمر</span>
+													<span class="ms-1" data-bs-toggle="tooltip" title="Specify your unique app name">
+														<i class="ki-duotone ki-information-5 text-gray-500 fs-6">
+															<span class="path1"></span>
+															<span class="path2"></span>
+															<span class="path3"></span>
+														</i>
+													</span>
+												</label>
+												<!--end::Label-->
+												<!--begin::Input-->
+												<input type="text" class="form-control form-control-lg form-control-solid" name="name" placeholder="" value="" />
+												<!--end::Input-->
+
+											</div>
+                                             <button class="btn btn-primary" id="saveEditBtn">تعديل <i class="fa-solid fa-pencil"></i></button>
+											<!--end::Input group-->
+
+										</div>
+									</div>
+								<!--end::Form-->
+							</div>
+							<!--end::Content-->
+						</div>
+						<!--end::Stepper-->
+					</div>
+					<!--end::Modal body-->
+				</div>
+				<!--end::Modal content-->
+			</div>
+			<!--end::Modal dialog-->
+		</div>
 		<!--end::Modal - Create App-->
 		<!--begin::Modal - View Users-->
 		<div class="modal fade" id="kt_modal_view_users" tabindex="-1" aria-hidden="true">
@@ -9001,6 +9106,8 @@ License: For each use you must have a valid license purchased only from above li
 		<!--begin::Javascript-->
 		<script>var hostUrl = "assets/";</script>
 		<!--begin::Global Javascript Bundle(mandatory for all pages)-->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 		<script src="assets/plugins/global/plugins.bundle.js"></script>
 		<script src="assets/js/scripts.bundle.js"></script>
 		<!--end::Global Javascript Bundle-->
@@ -9027,8 +9134,17 @@ License: For each use you must have a valid license purchased only from above li
 		<script src="assets/js/custom/utilities/modals/create-account.js"></script>
 		<script src="assets/js/custom/utilities/modals/create-app.js"></script>
 		<script src="assets/js/custom/utilities/modals/users-search.js"></script>
+
 		<!--end::Custom Javascript-->
 		<!--end::Javascript-->
+        <script>
+        $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            </script>
+        @yield('scripts')
 	</body>
 	<!--end::Body-->
 </html>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticalController;
+use App\Http\Controllers\OrphanController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -21,4 +22,10 @@ Route::get(uri:'/hospice',action :function(){
 });
 Route::post('/createArticle',ArticalController::class.'@createArticle');
 Route::get('/getArticle',ArticalController::class.'@getArticle');
-//Route::get('/Dashboard',ArticalController::class.'@getArticle');
+Route::get('/show-all',[OrphanController::class,'show']);
+Route::get('/orphans/data',[OrphanController::class,'getData']);
+Route::post('/add-data', [OrphanController::class, 'store']);
+// web.php
+Route::get('/orphansedit/{id}', [OrphanController::class, 'edit']);
+Route::put('/orphansupdate/{id}', [OrphanController::class, 'update']);
+Route::delete('/orphansDel/{id}', [OrphanController::class, 'orphansDel']);

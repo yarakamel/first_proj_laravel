@@ -1,0 +1,21 @@
+/* خلي الجدول يقرأ RTL */
+#orphansTable {
+    direction: rtl;
+    text-align: right;
+}
+
+/* رؤوس الأعمدة بمحاذاة اليمين */
+#orphansTable thead th {
+    text-align: right !important;
+}
+
+/* خلي الأيقونات تبعت الترتيب (↑↓) تطلع يمين مش يسار */
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc:after {
+    right: 8px;   /* حركها يمين */
+    left: auto;   /* ألغي المحاذاة الافتراضية لليسار */
+}
