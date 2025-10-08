@@ -11,5 +11,8 @@ class Orphan extends Model
     use HasFactory;
     protected $table="orphans";
     protected $fillable = ['id_no', 'full_name'];
-
+    public static function findByIdNumber(string $idNumber): ?self
+    {
+        return static::where('id_no', trim($idNumber))->first();
+    }
 }

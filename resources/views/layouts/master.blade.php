@@ -3918,7 +3918,10 @@ License: For each use you must have a valid license purchased only from above li
 										</div>
 										<!--end::Page title-->
 										<!--begin::Actions-->
-										<a href="/show-all" class="btn btn-sm btn-success ms-3 px-4 py-3">عرض الجميع</a>
+										<a href="{{ url()->previous() }}" class="btn btn-sm btn-secondary rounded-circle ms-3 px-4 py-3"><i class="ki-duotone ki-black-left-line">
+ <span class="path1"></span>
+ <span class="path2"></span>
+</i></a>
 										<!--end::Actions-->
 									</div>
 									<!--end::Toolbar wrapper-->
@@ -7231,6 +7234,78 @@ License: For each use you must have a valid license purchased only from above li
 
 											</div>
                                              <button class="btn btn-primary" id="saveEditBtn">تعديل <i class="fa-solid fa-pencil"></i></button>
+											<!--end::Input group-->
+
+										</div>
+									</div>
+								<!--end::Form-->
+							</div>
+							<!--end::Content-->
+						</div>
+						<!--end::Stepper-->
+					</div>
+					<!--end::Modal body-->
+				</div>
+				<!--end::Modal content-->
+			</div>
+			<!--end::Modal dialog-->
+		</div>
+         <div class="modal fade" id="kt_modal_upload" tabindex="-1" aria-hidden="true">
+			<!--begin::Modal dialog-->
+			<div class="modal-dialog modal-dialog-centered mw-900px">
+				<!--begin::Modal content-->
+				<div class="modal-content">
+					<!--begin::Modal header-->
+					<div class="modal-header">
+						<!--begin::Modal title-->
+						<h2>رفع ملف إكسل لبيانات الأيتام</h2>
+
+						<!--end::Modal title-->
+						<!--begin::Close-->
+						<div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+							<i class="ki-duotone ki-cross fs-1">
+								<span class="path1"></span>
+								<span class="path2"></span>
+							</i>
+						</div>
+						<!--end::Close-->
+					</div>
+					<!--end::Modal header-->
+					<!--begin::Modal body-->
+					<div class="modal-body py-lg-10 px-lg-10">
+						<!--begin::Stepper-->
+						<div class="stepper stepper-pills stepper-column d-flex flex-column flex-xl-row flex-row-fluid" id="kt_modal_create_app_stepper">
+
+							<!--begin::Content-->
+							<div class="flex-row-fluid py-lg-5 px-lg-15">
+								<!--begin::Form-->
+
+									<!--begin::Step 1-->
+									<div class="current" data-kt-stepper-element="content">
+										<div class="w-100">
+											<!--begin::Input group-->
+											<div class="fv-row mb-10">
+                                                <form id="importForm" name="file" enctype="multipart/form-data">
+												<!--begin::Label-->
+												<label class="d-flex align-items-center fs-5 fw-semibold mb-2">
+													<span class="required">إرفع ملف الإكسل من هنا</span>
+													<span class="ms-1" data-bs-toggle="tooltip" title="Specify your unique app name">
+														<i class="ki-duotone ki-information-5 text-gray-500 fs-6">
+															<span class="path1"></span>
+															<span class="path2"></span>
+															<span class="path3"></span>
+														</i>
+													</span>
+												</label>
+												<!--end::Label-->
+												<!--begin::Input-->
+
+												<input type="file" name="file" id="file" required>
+                                                <button type="submit" class="btn btn-success">استيراد</button>
+                                                </form>
+                                                <!--end::Input-->
+											</div>
+
 											<!--end::Input group-->
 
 										</div>

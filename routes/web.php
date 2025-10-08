@@ -5,7 +5,16 @@ use App\Http\Controllers\OrphanController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('Dashboard');
+    return view('index');
+});
+Route::get('/about', function () {
+    return view('about');
+});
+Route::get('/AllNews', function () {
+    return view('AllNews');
+});
+Route::get('/test-carousel', function () {
+    return view('test-carousel');
 });
 Route::get('/create', function () {
     return view('create');
@@ -29,3 +38,5 @@ Route::post('/add-data', [OrphanController::class, 'store']);
 Route::get('/orphansedit/{id}', [OrphanController::class, 'edit']);
 Route::put('/orphansupdate/{id}', [OrphanController::class, 'update']);
 Route::delete('/orphansDel/{id}', [OrphanController::class, 'orphansDel']);
+Route::post('/import', [OrphanController::class, 'import']);
+

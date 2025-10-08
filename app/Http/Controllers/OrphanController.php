@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\OrphansImport;
 use App\Models\Orphan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Maatwebsite\Excel\Facades\Excel;
 
 class OrphanController extends Controller
 {
@@ -108,4 +110,27 @@ public function orphansDel($id){
         ], 500);
     }
 }
+public function import(Request $request)
+{
+    $request->validate([
+        'file' => 'required|mimes:xlsx,xls,csv',
+    ]);
+//OrphansImportاسم Class إحنا أنشأناه عشان يتحكم في قراءة ملف الإكسل وتحويل كل صف منه إلى Model Orphan.
+
+        $file = $request->file('file');
+        $data = Excel::toArray([], $file);
+        $rows = $data[0];
+        unset($rows[0]);// إزالة صف العناوين
+    foreach ($rows as $i => $row) {
+        $id_number = trim($row[0]);
+        $name = trim($row[1]);
+        $findorphan=Orphan::findByIdNumber($id_number);
+        if()
+    }
+        return response()->json([
+        'success' => true,
+        'message' => 'تم استيراد الأيتام بنجاح!'
+    ]);
+}
+
 }
